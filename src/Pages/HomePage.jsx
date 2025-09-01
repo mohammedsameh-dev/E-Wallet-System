@@ -31,7 +31,7 @@ export default function HomePage() {
 
     const updatedUser = {
       ...currentUser,
-      balace: currentUser.balace + amount,
+      balance: currentUser.balance + amount,
       transactions: [
         ...currentUser.transactions,
         { type: "Deposit", amount, date: new Date().toLocaleString() },
@@ -45,11 +45,12 @@ export default function HomePage() {
   const withdraw = () => {
     const amount = parseFloat(userBalanceInput.current.value);
     if (isNaN(amount) || amount <= 0) return toast.error("Invalid amount");
-    if (amount > currentUser.balace) return toast.error("Insufficient balance");
+    if (amount > currentUser.balance)
+      return toast.error("Insufficient balance");
 
     const updatedUser = {
       ...currentUser,
-      balace: currentUser.balace - amount,
+      balance: currentUser.balance - amount,
       transactions: [
         ...currentUser.transactions,
         { type: "Withdraw", amount, date: new Date().toLocaleString() },
@@ -70,7 +71,7 @@ export default function HomePage() {
       <div className="h-[90vh] bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white px-4 py-6">
         <div className="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg space-y-4 mt-10">
           <h1 className="text-4xl font-bold text-center text-emerald-600">
-            Your Balance is: ${currentUser.balace}
+            Your Balance is: ${currentUser.balance}
           </h1>
 
           <div className="flex flex-col gap-2">
@@ -112,16 +113,17 @@ export default function HomePage() {
             </thead>
             <tbody>
               {currentUser.transactions.map((tx, index) => {
-                let balanceBefore = currentUser.balace;
+                let balanceBefore = currentUser.balance;
                 for (
                   let i = currentUser.transactions.length - 1;
                   i > index;
                   i--
                 ) {
-                  balanceBefore -=
-                    currentUser.transactions[i].type === "Deposit"
-                      ? currentUser.transactions[i].amount
-                      : -currentUser.transactions[i].amount;
+                  if (currentUser.transactions[i].type === "Deposit") {
+                    balanceBefore -= currentUser.transactions[i].amount;
+                  } else {
+                    balanceBefore += currentUser.transactions[i].amount;
+                  }
                 }
 
                 const balanceAfter =
