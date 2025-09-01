@@ -5,11 +5,11 @@ export default function MyHeader() {
       <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-xl font-bold">MyLogo</div>
         <div className="space-x-4 hidden md:flex">
-          <Link to="/" className="hover:underline">HomePage</Link>
+          <Link to="/" className="hover:underline">Register</Link>
+          <Link to="/HomePage" className="hover:underline">HomePage</Link>
           <Link to="/LoginPage" className="hover:underline">LoginPage</Link>
           <Link to="/AdminPage" className="hover:underline">AdminPage</Link>
         </div>
-
       </nav>
     </header>
   );

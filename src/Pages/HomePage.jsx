@@ -113,24 +113,18 @@ export default function HomePage() {
             </thead>
             <tbody>
               {currentUser.transactions.map((tx, index) => {
-                let balanceBefore = currentUser.balance;
-                for (
-                  let i = currentUser.transactions.length - 1;
-                  i > index;
-                  i--
-                ) {
+                let balanceBefore = 0;
+                for (let i = 0; i < index; i++) {
                   if (currentUser.transactions[i].type === "Deposit") {
-                    balanceBefore -= currentUser.transactions[i].amount;
-                  } else {
                     balanceBefore += currentUser.transactions[i].amount;
+                  } else {
+                    balanceBefore -= currentUser.transactions[i].amount;
                   }
                 }
-
                 const balanceAfter =
                   tx.type === "Deposit"
                     ? balanceBefore + tx.amount
                     : balanceBefore - tx.amount;
-
                 return (
                   <tr
                     key={index}

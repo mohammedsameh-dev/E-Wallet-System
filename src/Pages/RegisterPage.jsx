@@ -38,8 +38,10 @@ export default function RegisterPage() {
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("currentUserId", newUser.id);
 
-    toast.success("Account created successfully");
-    navigate("/");
+    toast.success("Account created successfully Please Login");
+    setTimeout(() => {
+    navigate("/LoginPage");           
+  }, 1500);
   };
 
   return (
@@ -48,7 +50,7 @@ export default function RegisterPage() {
         onSubmit={register}
         className="h-[60vh] flex flex-col justify-center items-center gap-5 bg-emerald-700/50 rounded-2xl p-6 md:w-96 w-[80vw]"
       >
-        <h1 className="text-3xl font-bold text-emerald-950">Register</h1>
+        <h1 className="text-3xl font-bold text-white">Register</h1>
 
         <input
           ref={nameInput}
