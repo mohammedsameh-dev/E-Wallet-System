@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import MyHeader from "../Component/MyHeader";
+import MyHeader from "../Components/MyHeader";
 import toast from "react-hot-toast";
 
 export default function HomePage() {
@@ -105,11 +105,13 @@ export default function HomePage() {
         <div className="w-full flex justify-center mt-5">
           <table className="text-center table bg-emerald-900">
             <thead>
-              <th>#</th>
-              <th>Before Balance: </th>
-              <th>After Balance: </th>
-              <th>Amount: </th>
-              <th>Type: </th>
+              <tr>
+                <th>#</th>
+                <th>Before Balance: </th>
+                <th>After Balance: </th>
+                <th>Amount: </th>
+                <th>Type: </th>
+              </tr>
             </thead>
             <tbody>
               {currentUser.transactions.map((tx, index) => {

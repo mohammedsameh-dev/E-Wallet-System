@@ -1,4 +1,4 @@
-import MyHeader from "../Component/MyHeader";
+import MyHeader from "../Components/MyHeader";
 import { useState } from "react";
 
 export default function AdminPage() {

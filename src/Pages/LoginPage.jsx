@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const emailInput = useRef();
@@ -29,13 +29,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full h-[100vh] flex flex-col justify-center items-center bg-amber-200 dark:bg-gray-300">
-      <h1 className="text-3xl h-15 text-gray-800">Welcome, Back</h1>
+    <div className="w-full h-[100vh] flex flex-col justify-center items-center dark:bg-gray-900">
+      <h1 className="text-3xl h-15 text-white">Welcome 👋 Please login here</h1>
       <form
         onSubmit={login}
         className="h-[50vh] flex flex-col justify-center items-center gap-5 bg-cyan-800/60 rounded-4xl md:w-100 lg:w-100 w-[80vw]"
       >
-
         <h1 className="text-4xl text-white">Login</h1>
         <input
           ref={emailInput}
@@ -54,6 +53,12 @@ export default function LoginPage() {
         <button className="btn text-blue-500 bg-cyan-800 w-50 hover:bg-blue-950">
           Submit
         </button>
+        <h1>
+          You don't have an account?{" "}
+          <Link to="../" className="underline">
+            Register
+          </Link>{" "}
+        </h1>
       </form>
     </div>
   );
